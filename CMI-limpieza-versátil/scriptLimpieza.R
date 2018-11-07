@@ -2,6 +2,10 @@ library(dplyr)
 library(stringr)
 library(lubridate)
 
+############################################ CORRER BLOQUE DE HASTA ABAJO #####################################################
+
+################################### PARA USARLO, CAMBIAR EL PATH DE LOS ARCHIVOS QUE VAN A CARGAR (HASTA ABAJO) ###############
+
 dataSample <- read.csv("060118-12.csv", header = FALSE )
 View(dataSample)
 
@@ -287,6 +291,12 @@ rm(tablaMaestra,f, hola, tablaLimpiaIndividual, bloqueIndividual, test, tablaLim
 
 ##################################### Funcion a partir del código correcto
 
+##################################################################################################################################
+
+#                              CORRER ESTOS ÚLTIMOS BLOQUES DE CÓDIGO PARA QUE TODO FUNCIONE 
+
+##################################################################################################################################
+
 bloqueIndividual <- function (archivoCSV){
   dataSample <- read.csv(archivoCSV, header = FALSE, stringsAsFactors=FALSE )
   tmpFile <- dataSample
@@ -320,7 +330,7 @@ bloqueIndividual <- function (archivoCSV){
 }
 
 
-files <- list.files(path = "D:/geord/Docs/Data Wrangling/final/files")
+files <- list.files(path = "D:/geord/Docs/Data Wrangling/Github/CMI-limpieza/versatil/files") ###### cambiar este path al de ustedes
 length(files)
 f=1
 while (f <=length(files)){
@@ -336,8 +346,8 @@ tablaMaestra <- tablaMaestra %>%
   mutate(precioUnitario = VENTA/UNI)%>%
   filter(!is.na(precioUnitario))
 
-test <- bloqueIndividual("080118-12.csv")
-View(test)
+#test <- bloqueIndividual("080118-12.csv")
+#View(test)
 View(tablaMaestra)
 
 
