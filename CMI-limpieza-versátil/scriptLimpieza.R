@@ -16,7 +16,7 @@ library(lubridate)
 ##################################################################################################################################
 
 
-files <- list.files(path = "D:/geord/Docs/Data Wrangling/Github/CMI-limpieza/versatil/files") ###### cambiar este path al de ustedes
+files <- list.files(path = "D:/geord/Docs/Data Wrangling/final/files") ###### cambiar este path al de ustedes
 length(files)
 
 bloqueIndividual <- function (archivoCSV){
@@ -46,25 +46,34 @@ bloqueIndividual <- function (archivoCSV){
       tmpFile["VENTA"] <-dataSample[i+9]
     }
   }
+  
   return(tmpFile)
+  
 }
-f=1
-while (f <=length(files)){
-  if (f == 1){
-    tablaMaestra <- bloqueIndividual(files[f])
-  } else {
-    tablaLimpia <- bloqueIndividual(files[f])
-    tablaMaestra<- rbind(tablaMaestra, tablaLimpia)
-  }
-  f = f+1
-}
-tablaMaestra <- tablaMaestra %>%
-  mutate(precioUnitario = VENTA/UNI)%>%
-  filter(!is.na(precioUnitario))
 
-#test <- bloqueIndividual("080118-12.csv")
-#View(test)
-View(tablaMaestra)
+magia <- function(){
+  files <- list.files(path = "D:/geord/Docs/Data Wrangling/final/files")
+  length(files)
+  f=1
+  while (f <=length(files)){
+    if (f == 1){
+      tablaMaestra <- bloqueIndividual(files[f])
+    } else {
+      tablaLimpia <- bloqueIndividual(files[f])
+      tablaMaestra<- rbind(tablaMaestra, tablaLimpia)
+    }
+    f = f+1
+  }
+  tablaMaestra <- tablaMaestra %>%
+    mutate(precioUnitario = VENTA/UNI)%>%
+    filter(!is.na(precioUnitario))
+  return(tablaMaestra)
+}
+
+
+tablaMágica <- magia()
+
+View(tablaMágica)
 
 
 
