@@ -1,3 +1,10 @@
+
+
+
+
+################## CORRER TODO --------------------------------------------
+
+setwd("el path completo hasta la carpeta en donde están los archivos") # Cambiar esto
 library(dplyr)
 library(stringr)
 library(lubridate)
@@ -14,10 +21,6 @@ library(lubridate)
 #                              CORRER ESTOS ÚLTIMOS BLOQUES DE CÓDIGO PARA QUE TODO FUNCIONE 
 
 ##################################################################################################################################
-
-
-files <- list.files(path = "D:/geord/Docs/Data Wrangling/final/files") ###### cambiar este path al de ustedes
-length(files)
 
 bloqueIndividual <- function (archivoCSV){
   dataSample <- read.csv(archivoCSV, header = FALSE, stringsAsFactors=FALSE )
